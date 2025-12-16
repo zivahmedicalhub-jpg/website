@@ -6,24 +6,72 @@ import { useToast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import {
+    checkRateLimit,
+    recordSubmission,
+    getRateLimitRemaining,
+    sanitizeInput,
+    validateEmail,
+    validateName
+} from '@/utils/security';
 
 export default function Hero() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [honeypot, setHoneypot] = useState(''); // Bot detection
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const { toast } = useToast();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!email) return;
+
+        // Security Check 1: Honeypot (Bot Detection)
+        if (honeypot) {
+            console.warn('Bot detected via honeypot');
+            return;
+        }
+
+        // Security Check 2: Rate Limiting
+        const rateLimitKey = 'newsletter';
+        if (checkRateLimit(rateLimitKey, 60)) {
+            const remaining = getRateLimitRemaining(rateLimitKey, 60);
+            toast({
+                title: "Please Wait",
+                description: `You can subscribe again in ${remaining} seconds.`,
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // Security Check 3: Input Validation
+        const sanitizedName = sanitizeInput(name, 100);
+        const sanitizedEmail = sanitizeInput(email, 100);
+
+        if (!validateName(sanitizedName)) {
+            toast({
+                title: "Invalid Name",
+                description: "Please enter a valid name.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        if (!validateEmail(sanitizedEmail)) {
+            toast({
+                title: "Invalid Email",
+                description: "Please enter a valid email address.",
+                variant: "destructive",
+            });
+            return;
+        }
 
         setLoading(true);
 
-        // EmailJS Configuration
-        const serviceId = 'service_9ly15oq';
-        const templateId = 'template_lcnpcal';
-        const publicKey = 'jGnqprOvcwd-CZAW4';
+        // EmailJS Configuration from environment variables
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
         try {
             await emailjs.send(
@@ -31,12 +79,15 @@ export default function Hero() {
                 templateId,
                 {
                     to_email: 'zivahmedicalhub@gmail.com',
-                    user_name: name,
-                    user_email: email,
-                    message: `New subscription request from: ${name} (${email})`,
+                    user_name: sanitizedName,
+                    user_email: sanitizedEmail,
+                    message: `New subscription request from: ${sanitizedName} (${sanitizedEmail})`,
                 },
                 publicKey
             );
+
+            // Record successful submission for rate limiting
+            recordSubmission(rateLimitKey);
 
             setSuccess(true);
             toast({
@@ -60,7 +111,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-white pt-20">
+        <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center bg-white pt-20">
             <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
 
             <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-emerald-50/50 to-transparent pointer-events-none"></div>
@@ -106,6 +157,25 @@ export default function Hero() {
                         className="max-w-xl mx-auto mt-12"
                     >
                         <form onSubmit={handleSubmit} className="relative flex items-center rounded-full border border-white/20 bg-white/80 backdrop-blur-xl shadow-2xl shadow-emerald-500/10 p-2 ring-1 ring-black/5">
+                            {/* Honeypot field - hidden from users, visible to bots */}
+                            <input
+                                type="text"
+                                name="website"
+                                value={honeypot}
+                                onChange={(e) => setHoneypot(e.target.value)}
+                                style={{
+                                    position: 'absolute',
+                                    left: '-9999px',
+                                    width: '1px',
+                                    height: '1px',
+                                    opacity: 0,
+                                    pointerEvents: 'none'
+                                }}
+                                tabIndex={-1}
+                                autoComplete="off"
+                                aria-hidden="true"
+                            />
+
                             <User className="ml-4 h-5 w-5 text-gray-400" />
                             <Input
                                 type="text"

@@ -74,6 +74,7 @@ export default function About() {
                     <img
                         src="https://images.pexels.com/photos/8852961/pexels-photo-8852961.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         alt="Healthcare Professional"
+                        loading="lazy"
                         className="w-full h-[400px] object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/30 to-transparent flex items-end">

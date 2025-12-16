@@ -59,7 +59,7 @@ export default function Footer() {
     };
 
     return (
-        <footer id="contact" className="bg-white border-t border-gray-100 pt-20 pb-10">
+        <footer id="site-footer" className="bg-white border-t border-gray-100 pt-20 pb-10">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
                     <div className="lg:col-span-4 space-y-6">
@@ -71,6 +71,7 @@ export default function Footer() {
                             <img
                                 src={logo}
                                 alt="Zivah"
+                                loading="lazy"
                                 className="h-12 w-auto mb-6"
                             />
                             <p className="text-gray-500 leading-relaxed mb-6 max-w-sm">
