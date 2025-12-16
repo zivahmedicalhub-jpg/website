@@ -24,7 +24,7 @@ export default function Footer() {
         setLoading(true);
 
         // TODO: Replace with your actual EmailJS keys
-        const serviceId = 'YOUR_SERVICE_ID';
+        const serviceId = 'service_9ly15oq';
         const templateId = 'YOUR_TEMPLATE_ID';
         const publicKey = 'YOUR_PUBLIC_KEY';
 
@@ -76,6 +76,13 @@ export default function Footer() {
                             <p className="text-gray-500 leading-relaxed mb-6 max-w-sm">
                                 Your trusted partner in healthcare, committed to providing quality medical solutions for a healthier tomorrow.
                             </p>
+                            <a
+                                href="mailto:support@zivahmedicalhub.com"
+                                className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors mb-6 group"
+                            >
+                                <Mail className="h-5 w-5 text-emerald-600" />
+                                <span className="text-sm font-medium">support@zivahmedicalhub.com</span>
+                            </a>
                             <div className="flex gap-4">
                                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                                     <a key={i} href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300">
@@ -152,7 +159,7 @@ export default function Footer() {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-gray-400 text-center md:text-left">
-                        © 2024 Zivah Healthcare. All rights reserved.
+                        © 2025 Zivah Healthcare. All rights reserved.
                     </p>
                     <div className="flex flex-wrap justify-center gap-6">
                         {legalLinks.map((link) => (

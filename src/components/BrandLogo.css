@@ -1,0 +1,85 @@
+/* Brand Logo Container - Centered Layout */
+.brand-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Brand Logo Image - Larger, Responsive, Maintains Aspect Ratio */
+.brand-logo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover Effect for Logo */
+.brand-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+}
+
+/* Brand Heading */
+.brand-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Brand Tagline */
+.brand-tagline {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+  .brand-logo-container {
+    padding: 2rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .brand-logo {
+    max-width: 300px;
+  }
+
+  .brand-heading {
+    font-size: 2rem;
+  }
+
+  .brand-tagline {
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+  .brand-logo-container {
+    padding: 1.5rem 0.75rem;
+    gap: 1rem;
+  }
+
+  .brand-logo {
+    max-width: 250px;
+  }
+
+  .brand-heading {
+    font-size: 1.75rem;
+  }
+
+  .brand-tagline {
+    font-size: 1rem;
+  }
+}
