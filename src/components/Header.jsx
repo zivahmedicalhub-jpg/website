@@ -48,6 +48,9 @@ export default function Header() {
                         <img
                             src={logo}
                             alt="Zivah"
+                            width="612"
+                            height="408"
+                            fetchPriority="high"
                             className="h-16 lg:h-20 w-auto transition-all duration-300"
                         />
                     </div>

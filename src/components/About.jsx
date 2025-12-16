@@ -74,6 +74,8 @@ export default function About() {
                     <img
                         src="https://images.pexels.com/photos/8852961/pexels-photo-8852961.jpeg?auto=compress&cs=tinysrgb&w=1200"
                         alt="Healthcare Professional"
+                        width="1200"
+                        height="676"
                         loading="lazy"
                         className="w-full h-[400px] object-cover"
                     />

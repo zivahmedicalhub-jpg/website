@@ -71,6 +71,8 @@ export default function Footer() {
                             <img
                                 src={logo}
                                 alt="Zivah"
+                                width="612"
+                                height="408"
                                 loading="lazy"
                                 className="h-12 w-auto mb-6"
                             />
