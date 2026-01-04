@@ -4,66 +4,84 @@
 <head>
   <meta charset="UTF-8" />
 
-  <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.web3forms.com https://api.emailjs.com; frame-src 'none';" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
   <link rel="canonical" href="https://zivahmedicalhub.com/" />
 
-  <!-- SEO Meta Tags -->
+  <!-- SEO -->
+  <title>Zivah Medical Hub | Trusted Healthcare & Medical Solutions</title>
   <meta name="description"
-    content="Zivah Medical Hub - Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
+    content="Zivah Medical Hub – Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
   <meta name="author" content="Praveen Satyamsetti" />
 
-  <!-- Favicon for browser tab -->
-  <link rel="icon" href="/logo_2.png" type="image/png" sizes="48x48">
-  <link rel="shortcut icon" href="/logo_2.png">
-  <!-- Apple Touch Icon for iOS devices -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/logo_img.jpg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Open Graph / Facebook -->
+  <!-- Favicons (used by Google SERP icon) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/logo_2.png" type="image/png">
+  <link rel="apple-touch-icon" href="/logo_img.jpg">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Zivah Medical Hub" />
   <meta property="og:url" content="https://zivahmedicalhub.com/" />
-  <meta property="og:title" content="Zivah Medical Hub - Your Partner in Health & Wellness" />
+  <meta property="og:title" content="Zivah Medical Hub | Trusted Healthcare & Medical Solutions" />
   <meta property="og:description"
-    content="Zivah Medical Hub - Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
+    content="Zivah Medical Hub – Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
   <meta property="og:image" content="https://zivahmedicalhub.com/logo_img.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Zivah Medical Hub Logo" />
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://zivahmedicalhub.com/" />
-  <meta property="twitter:title" content="Zivah Medical Hub - Your Partner in Health & Wellness" />
-  <meta property="twitter:description"
-    content="Zivah Medical Hub - Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
-  <meta property="twitter:image" content="https://zivahmedicalhub.com/logo_img.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zivah Medical Hub | Trusted Healthcare & Medical Solutions" />
+  <meta name="twitter:description"
+    content="Zivah Medical Hub – Your trusted partner in healthcare, providing quality medical solutions, professional guidance, and compassionate care 24/7." />
+  <meta name="twitter:image" content="https://zivahmedicalhub.com/logo_img.jpg" />
 
-  <!-- Schema.org Structured Data -->
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Organization / Medical Entity -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalOrganization",
-      "name": "Zivah Medical Hub",
-      "url": "https://zivahmedicalhub.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://zivahmedicalhub.com/logo_img.jpg",
-        "width": 512,
-        "height": 512
-      },
-      "image": "https://zivahmedicalhub.com/logo_img.jpg",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "availableLanguage": "en"
-      }
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "@id": "https://zivahmedicalhub.com/#organization",
+    "name": "Zivah Medical Hub",
+    "url": "https://zivahmedicalhub.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zivahmedicalhub.com/logo_img.jpg",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://zivahmedicalhub.com/logo_img.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/company/zivahmedicalhub",
+      "https://www.facebook.com/zivahmedicalhub"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "en"
     }
+  }
   </script>
 
-
-  <title>Zivah Medical Hub</title>
+  <!-- WebSite Schema (CRITICAL for site name in Google SERP) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://zivahmedicalhub.com/#website",
+    "url": "https://zivahmedicalhub.com/",
+    "name": "Zivah Medical Hub",
+    "alternateName": "Zivah"
+  }
+  </script>
 </head>
 
 <body>
