@@ -6,12 +6,18 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Loader2, A
 import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const companyLinks = ['About Us', 'Careers', 'Press', 'Blog'];
     const supportLinks = ['Help Center', 'Contact Us', 'FAQs', 'Shipping Info'];
-    const legalLinks = ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Disclaimer'];
+
+    const legalLinks = [
+        { name: 'Privacy Policy', path: '/privacy-policy' },
+        { name: 'Terms & Conditions', path: '/terms-and-conditions' },
+        { name: 'Refund Policy', path: '/refund-policy' },
+    ];
 
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
@@ -80,11 +86,11 @@ export default function Footer() {
                                 Your trusted partner in healthcare, committed to providing quality medical solutions for a healthier tomorrow.
                             </p>
                             <a
-                                href="mailto:support@zivahmedicalhub.com"
+                                href="mailto:Info@zivahmedicalhub.com"
                                 className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors mb-6 group"
                             >
                                 <Mail className="h-5 w-5 text-emerald-600" />
-                                <span className="text-sm font-medium">support@zivahmedicalhub.com</span>
+                                <span className="text-sm font-medium">Info@zivahmedicalhub.com</span>
                             </a>
                             <div className="flex gap-4">
                                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
@@ -162,17 +168,17 @@ export default function Footer() {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-gray-400 text-center md:text-left">
-                        © 2025 Zivah Healthcare. All rights reserved.
+                        © 2026 Zivah Healthcare. All rights reserved.
                     </p>
                     <div className="flex flex-wrap justify-center gap-6">
                         {legalLinks.map((link) => (
-                            <a
-                                key={link}
-                                href="#"
+                            <Link
+                                key={link.name}
+                                to={link.path}
                                 className="text-sm text-gray-400 hover:text-emerald-600 transition-colors"
                             >
-                                {link}
-                            </a>
+                                {link.name}
+                            </Link>
                         ))}
                     </div>
                 </div>
