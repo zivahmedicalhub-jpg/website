@@ -14,9 +14,10 @@ export default function Footer() {
     const supportLinks = ['Help Center', 'Contact Us', 'FAQs', 'Shipping Info'];
 
     const legalLinks = [
-        { name: 'Privacy Policy', path: '/privacy-policy' },
-        { name: 'Terms & Conditions', path: '/terms-and-conditions' },
-        { name: 'Refund Policy', path: '/refund-policy' },
+        { name: 'Privacy Policy', path: '/privacy' },
+        { name: 'Terms & Conditions', path: '/terms' },
+        { name: 'Refund Policy', path: '/refund' },
+        { name: 'Shipping Policy', path: '/shipping' },
     ];
 
     const [email, setEmail] = useState('');
