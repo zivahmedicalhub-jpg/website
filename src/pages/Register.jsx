@@ -9,6 +9,7 @@ import { TermsContent } from './TermsAndConditions';
 import { RefundContent } from './RefundPolicy';
 import { PrivacyContent } from './PrivacyPolicy';
 import { checkRateLimit, recordSubmission, getRateLimitRemaining, sanitizeInput, validateEmail } from '@/utils/security';
+import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
 
 const steps = [
     { id: 1, title: "Your Details", icon: User },
@@ -146,7 +147,7 @@ export default function Register() {
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Link to="/">
-                            <img src="/Brand_logo_Zivah.png" alt="Zivah" className="h-8 w-auto" />
+                            <img src={logo} alt="Zivah" className="h-8 w-auto" />
                         </Link>
                         <span className="text-sm font-medium text-gray-500 hidden sm:inline-block border-l border-gray-300 pl-4 ml-2">
                             Partner Registration
