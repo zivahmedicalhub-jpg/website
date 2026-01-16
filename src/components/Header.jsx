@@ -4,7 +4,7 @@ import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
-import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import { motion } from 'framer-motion';
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +34,7 @@ export default function Header() {
         }
     };
 
-    const navItems = ['Home', 'About', 'Products', 'Why Us', 'Contact'];
+    const navItems = ['Home', 'Products', 'About', 'Why Us', 'Contact'];
 
     return (
         <motion.header

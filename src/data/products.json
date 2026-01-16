@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "name": "Azithral 500mg Tablet",
+        "category": "Antibiotics",
+        "price": 119.50,
+        "image": "AZITHRAL 500 TAB.jpg",
+        "description": "Used for treatment of bacterial infections of the respiratory tract, ear, nose, throat, lungs, skin, and eye."
+    },
+    {
+        "id": 2,
+        "name": "Clavam 625mg Tablet",
+        "category": "Antibiotics",
+        "price": 204.00,
+        "image": "CLAVAM 625MG TAB.jpg",
+        "description": "Combination medicine used to treat various types of bacterial infections."
+    },
+    {
+        "id": 3,
+        "name": "Pan 40 Tablet",
+        "category": "Gastrointestinal",
+        "price": 155.00,
+        "image": "PAN 40.jpg",
+        "description": "Reduces the amount of acid produced in your stomach. Used for acid reflux."
+    },
+    {
+        "id": 4,
+        "name": "Selsun Shampoo 120ml",
+        "category": "Personal Care",
+        "price": 385.00,
+        "image": "SELSUN 120ML.jpg",
+        "description": "Anti-dandruff shampoo that treats and controls dandruff."
+    },
+    {
+        "id": 5,
+        "name": "Zincovit Tablet",
+        "category": "Supplements",
+        "price": 105.00,
+        "image": "ZINCOVIT TAB.jpg",
+        "description": "Multivitamin and multimineral supplement for overall health and immunity."
+    },
+    {
+        "id": 6,
+        "name": "Telpres 40mg Tablet",
+        "category": "Cardiology",
+        "price": 98.00,
+        "image": "TELPRES 40MG TAB.jpg",
+        "description": "Used to treat high blood pressure (hypertension) and heart failure."
+    },
+    {
+        "id": 7,
+        "name": "Ascoril LS Syrup",
+        "category": "Cough & Cold",
+        "price": 118.00,
+        "image": "BROZEET LS SYP.jpg",
+        "description": "Used in the treatment of cough with mucus."
+    },
+    {
+        "id": 8,
+        "name": "Follihair Tablet",
+        "category": "Supplements",
+        "price": 595.00,
+        "image": "FOLLIHAIR TAB.jpg",
+        "description": "Nutritional supplement specifically formulated to support hair growth and health."
+    },
+    {
+        "id": 9,
+        "name": "Creon 25000 Capsule",
+        "category": "Gastrointestinal",
+        "price": 847.00,
+        "image": "CREON 25000.jpg",
+        "description": "Enzyme supplement used to treat digestion problems caused by pancreatic issues."
+    },
+    {
+        "id": 10,
+        "name": "Refresh Liquigel",
+        "category": "Eye Care",
+        "price": 190.00,
+        "image": "REFRESH LIQUIGEL.jpg",
+        "description": "Lubricating eye drops for relief from dry, irritated eyes."
+    },
+    {
+        "id": 11,
+        "name": "Gemcal Capsule",
+        "category": "Supplements",
+        "price": 285.00,
+        "image": "GEMCAL CAP.jpg",
+        "description": "Calcium and Vitamin D3 supplement for bone health."
+    },
+    {
+        "id": 12,
+        "name": "Meftal Spas Tablet",
+        "category": "Pain Relief",
+        "price": 46.00,
+        "image": "MEFTAL FORTE TAB.jpg",
+        "description": "Used to treat abdominal pain and cramps."
+    }
+]

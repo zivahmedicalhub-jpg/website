@@ -39,7 +39,7 @@ export default function Features() {
     ];
 
     return (
-        <section id="features" className="py-20 lg:py-32 bg-white relative overflow-hidden">
+        <section id="why-us" className="py-20 lg:py-32 bg-white relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-1/2 left-0 w-full h-full bg-gradient-to-b from-transparent to-gray-50/50 pointer-events-none"></div>
 

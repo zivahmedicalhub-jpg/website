@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Mail, Phone, User, Building2, Send, ArrowRight, ArrowLeft, CheckCircle2, Loader2, FileText, RefreshCw, Lock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TermsContent } from './TermsAndConditions';
 import { RefundContent } from './RefundPolicy';
