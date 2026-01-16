@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 export default function Header() {
-    const navItems = ['Home', 'About', 'Features', 'Medical Hub', 'Contact'];
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false); // Track sheet open state
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,59 +20,59 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (e, itemId) => {
+    const scrollToSection = (e, sectionId) => {
         e.preventDefault();
-        const element = document.getElementById(itemId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            // Close mobile menu if open
-            setIsOpen(false);
+        setIsOpen(false);
+
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: sectionId } });
+        } else {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
 
+    const navItems = ['Home', 'About', 'Products', 'Why Us', 'Contact'];
+
     return (
         <motion.header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 sm:px-6 lg:px-8 py-4",
-                isScrolled ? "py-2" : "py-4"
-            )}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.5 }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm h-16' : 'bg-transparent h-20'
+                }`}
         >
-            <div className={cn(
-                "container mx-auto transition-all duration-300 rounded-full px-6",
-                isScrolled ? "glass-panel py-2" : "bg-transparent py-2"
-            )}>
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                        <img
-                            src={logo}
-                            alt="Zivah"
-                            width="612"
-                            height="408"
-                            fetchPriority="high"
-                            className="h-16 lg:h-20 w-auto transition-all duration-300"
-                        />
-                    </div>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                <div className="flex items-center justify-between h-full">
+                    <Link to="/" className="flex items-center gap-2 group">
+                        <div className="relative">
+                            <div className="absolute -inset-1 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 blur"></div>
+                            <img
+                                src={logo}
+                                alt="Zivah"
+                                className="h-10 w-auto relative transform transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                    </Link>
 
-                    <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
+                    <nav className="hidden md:flex items-center gap-8">
                         {navItems.map((item) => (
                             <a
                                 key={item}
                                 href={`#${item.toLowerCase().replace(' ', '-')}`}
                                 onClick={(e) => scrollToSection(e, item.toLowerCase().replace(' ', '-'))}
-                                className="text-sm lg:text-base font-medium text-gray-700 hover:text-emerald-600 transition-colors relative group cursor-pointer"
+                                className="text-sm font-medium text-gray-700 hover:text-emerald-600 transition-colors relative group"
                             >
                                 {item}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover:w-full"></span>
+                                <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                             </a>
                         ))}
                     </nav>
 
                     <div className="hidden md:block">
                         <Button
-                            onClick={(e) => scrollToSection(e, 'contact')}
+                            onClick={() => navigate('/register')}
                             className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-300"
                         >
                             Get Started
@@ -79,9 +80,9 @@ export default function Header() {
                     </div>
 
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                        <SheetTrigger asChild className="md:hidden">
-                            <Button variant="ghost" size="icon">
-                                <Menu className="h-5 w-5" />
+                        <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon" className="md:hidden">
+                                <Menu className="h-6 w-6" />
                             </Button>
                         </SheetTrigger>
                         <SheetContent>
@@ -97,7 +98,10 @@ export default function Header() {
                                     </a>
                                 ))}
                                 <Button
-                                    onClick={(e) => scrollToSection(e, 'contact')}
+                                    onClick={() => {
+                                        navigate('/register');
+                                        setIsOpen(false);
+                                    }}
                                     className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-full mt-4"
                                 >
                                     Get Started

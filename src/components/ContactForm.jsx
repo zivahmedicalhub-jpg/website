@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, User, MessageSquare, Send, Loader2, CheckCircle2, Stethoscope, Heart, Shield } from 'lucide-react';
+import { Mail, Phone, User, MessageSquare, Send, Loader2, CheckCircle2, Stethoscope, Heart, Shield, Building2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -23,8 +24,10 @@ export default function ContactForm() {
         name: '',
         email: '',
         phone: '',
+        userType: '',
         subject: 'General Inquiry',
-        message: ''
+        message: '',
+        termsAgreed: false
     });
     const [honeypot, setHoneypot] = useState(''); // Bot detection field
     const [loading, setLoading] = useState(false);
@@ -32,19 +35,38 @@ export default function ContactForm() {
     const { toast } = useToast();
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: value
+            [name]: type === 'checkbox' ? checked : value
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check Agreement
+        if (!formData.termsAgreed) {
+            toast({
+                title: "Terms Agreement Required",
+                description: "Please agree to the Terms, Refund Policy, and Privacy Policy to proceed.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // Check User Type
+        if (!formData.userType) {
+            toast({
+                title: "Organization Type Required",
+                description: "Please select your organization type.",
+                variant: "destructive",
+            });
+            return;
+        }
+
         // Security Check 1: Honeypot (Bot Detection)
         if (honeypot) {
-            // Bot detected - silently reject without showing error
             console.warn('Bot detected via honeypot');
             return;
         }
@@ -115,8 +137,10 @@ export default function ContactForm() {
         formDataToSend.append("name", sanitizedName);
         formDataToSend.append("email", sanitizedEmail);
         formDataToSend.append("phone", sanitizedPhone);
+        formDataToSend.append("organization_type", formData.userType);
         formDataToSend.append("subject", formData.subject);
         formDataToSend.append("message", sanitizedMessage);
+        formDataToSend.append("terms_agreed", "Yes");
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -142,8 +166,10 @@ export default function ContactForm() {
                     name: '',
                     email: '',
                     phone: '',
+                    userType: '',
                     subject: 'General Inquiry',
-                    message: ''
+                    message: '',
+                    termsAgreed: false
                 });
 
                 setTimeout(() => setSuccess(false), 3000);
@@ -267,26 +293,19 @@ export default function ContactForm() {
                         >
                             <div className="glass-card rounded-2xl p-8 lg:p-10">
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    {/* Honeypot field - hidden from users, visible to bots */}
+                                    {/* Honeypot field */}
                                     <input
                                         type="text"
                                         name="website"
                                         value={honeypot}
                                         onChange={(e) => setHoneypot(e.target.value)}
-                                        style={{
-                                            position: 'absolute',
-                                            left: '-9999px',
-                                            width: '1px',
-                                            height: '1px',
-                                            opacity: 0,
-                                            pointerEvents: 'none'
-                                        }}
+                                        className="absolute opacity-0 -z-10 w-0 h-0"
                                         tabIndex={-1}
                                         autoComplete="off"
                                         aria-hidden="true"
                                     />
 
-                                    {/* Name and Email Row */}
+                                    {/* Name and Organization Type Row */}
                                     <div className="grid sm:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <label htmlFor="name" className="text-sm font-medium text-gray-700 flex items-center gap-2">
@@ -307,6 +326,32 @@ export default function ContactForm() {
                                         </div>
 
                                         <div className="space-y-2">
+                                            <label htmlFor="userType" className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                                <Building2 className="h-4 w-4 text-emerald-600" />
+                                                Organization Type <span className="text-red-500">*</span>
+                                            </label>
+                                            <select
+                                                id="userType"
+                                                name="userType"
+                                                value={formData.userType}
+                                                onChange={handleChange}
+                                                required
+                                                disabled={loading || success}
+                                                className="h-12 w-full bg-white/50 border border-gray-200 rounded-xl px-3 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                            >
+                                                <option value="" disabled>Select Type</option>
+                                                <option value="Pharmacy">Pharmacy</option>
+                                                <option value="Hospital">Hospital</option>
+                                                <option value="Clinic">Clinic</option>
+                                                <option value="Distributor">Distributor</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {/* Email and Phone Row */}
+                                    <div className="grid sm:grid-cols-2 gap-6">
+                                        <div className="space-y-2">
                                             <label htmlFor="email" className="text-sm font-medium text-gray-700 flex items-center gap-2">
                                                 <Mail className="h-4 w-4 text-emerald-600" />
                                                 Email Address
@@ -323,10 +368,7 @@ export default function ContactForm() {
                                                 className="h-12 bg-white/50 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl"
                                             />
                                         </div>
-                                    </div>
 
-                                    {/* Phone and Subject Row */}
-                                    <div className="grid sm:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <label htmlFor="phone" className="text-sm font-medium text-gray-700 flex items-center gap-2">
                                                 <Phone className="h-4 w-4 text-emerald-600" />
@@ -343,26 +385,28 @@ export default function ContactForm() {
                                                 className="h-12 bg-white/50 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl"
                                             />
                                         </div>
+                                    </div>
 
-                                        <div className="space-y-2">
-                                            <label htmlFor="subject" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                                                <MessageSquare className="h-4 w-4 text-emerald-600" />
-                                                Subject
-                                            </label>
-                                            <select
-                                                id="subject"
-                                                name="subject"
-                                                value={formData.subject}
-                                                onChange={handleChange}
-                                                disabled={loading || success}
-                                                className="h-12 w-full bg-white/50 border border-gray-200 rounded-xl px-3 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                            >
-                                                <option value="General Inquiry">General Inquiry</option>
-                                                <option value="Appointment">Appointment</option>
-                                                <option value="Support">Support</option>
-                                                <option value="Partnership">Partnership</option>
-                                            </select>
-                                        </div>
+                                    {/* Subject */}
+                                    <div className="space-y-2">
+                                        <label htmlFor="subject" className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <MessageSquare className="h-4 w-4 text-emerald-600" />
+                                            Subject
+                                        </label>
+                                        <select
+                                            id="subject"
+                                            name="subject"
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            disabled={loading || success}
+                                            className="h-12 w-full bg-white/50 border border-gray-200 rounded-xl px-3 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                        >
+                                            <option value="General Inquiry">General Inquiry</option>
+                                            <option value="account_setup">New Account Setup</option>
+                                            <option value="stock_inquiry">Stock Inquiry</option>
+                                            <option value="Support">Support</option>
+                                            <option value="Partnership">Partnership</option>
+                                        </select>
                                     </div>
 
                                     {/* Message */}
@@ -379,8 +423,31 @@ export default function ContactForm() {
                                             onChange={handleChange}
                                             required
                                             disabled={loading || success}
-                                            className="min-h-[150px] bg-white/50 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl resize-none"
+                                            className="min-h-[120px] bg-white/50 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl resize-none"
                                         />
+                                    </div>
+
+                                    {/* Terms Agreement */}
+                                    <div className="flex items-start gap-3 pt-2">
+                                        <div className="flex items-center h-5">
+                                            <input
+                                                id="termsAgreed"
+                                                name="termsAgreed"
+                                                type="checkbox"
+                                                checked={formData.termsAgreed}
+                                                onChange={handleChange}
+                                                disabled={loading || success}
+                                                className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                                            />
+                                        </div>
+                                        <div className="text-sm">
+                                            <label htmlFor="termsAgreed" className="font-medium text-gray-700">
+                                                I agree to the Terms and Policies
+                                            </label>
+                                            <p className="text-gray-500 mt-1">
+                                                By checking this box, I agree to the <Link to="/terms-and-conditions" target="_blank" className="text-emerald-600 hover:underline">Terms & Conditions</Link>, <Link to="/refund-policy" target="_blank" className="text-emerald-600 hover:underline">Refund Policy</Link>, and <Link to="/privacy-policy" target="_blank" className="text-emerald-600 hover:underline">Privacy Policy</Link>.
+                                            </p>
+                                        </div>
                                     </div>
 
                                     {/* Submit Button */}
@@ -404,7 +471,7 @@ export default function ContactForm() {
                                                     className="flex items-center justify-center"
                                                 >
                                                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                                    Sending Message...
+                                                    Processing...
                                                 </motion.div>
                                             ) : success ? (
                                                 <motion.div
@@ -415,7 +482,7 @@ export default function ContactForm() {
                                                     className="flex items-center justify-center"
                                                 >
                                                     <CheckCircle2 className="mr-2 h-5 w-5" />
-                                                    Message Sent!
+                                                    Request Submitted
                                                 </motion.div>
                                             ) : (
                                                 <motion.span
@@ -425,7 +492,7 @@ export default function ContactForm() {
                                                     exit={{ opacity: 0 }}
                                                     className="flex items-center justify-center"
                                                 >
-                                                    Send Message
+                                                    Submit Request
                                                     <Send className="ml-2 h-5 w-5" />
                                                 </motion.span>
                                             )}

@@ -1,31 +1,52 @@
 import { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route, ScrollRestoration } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import Footer from './components/Footer';
 
-// Lazy load components that are not immediately visible
-const About = lazy(() => import('./components/About'));
-const Features = lazy(() => import('./components/Features'));
-const MedicalHub = lazy(() => import('./components/MedicalHub'));
-const MissionVision = lazy(() => import('./components/MissionVision'));
-const ContactForm = lazy(() => import('./components/ContactForm'));
-const Footer = lazy(() => import('./components/Footer'));
+import Home from './pages/Home';
+import Register from './pages/Register';
+
+// Lazy load secondary pages
+const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
+const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <Header />
-      <Hero />
-      <Suspense fallback={<div className="flex justify-center items-center py-20">Loading sections...</div>}>
-        <About />
-        <Features />
-        <MedicalHub />
-        <MissionVision />
-        <ContactForm />
+    <Router>
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
-      </Suspense>
-    </div>
+        <ScrollToTop />
+      </div>
+    </Router>
   );
+}
+
+// Helper to scroll to top on route change
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 export default App;
