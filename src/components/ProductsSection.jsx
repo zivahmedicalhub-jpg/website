@@ -1,6 +1,6 @@
 import products from '@/data/products.json';
 import ProductCard from './ProductCard';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 export default function ProductsSection() {
     return (

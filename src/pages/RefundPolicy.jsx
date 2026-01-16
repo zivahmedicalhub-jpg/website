@@ -10,48 +10,72 @@ export function RefundContent() {
             {/* Notice */}
             <div className="p-5 bg-blue-50 border-l-4 border-blue-600 rounded-r-sm">
                 <p className="text-sm text-blue-800 leading-relaxed m-0">
-                    <strong>Important Note:</strong> Due to strict pharmaceutical regulations, returns are permitted only under limited conditions. All claims must be raised within <strong>48 hours</strong> of delivery.
+                    <strong>Important Note:</strong> Due to the regulated nature of pharmaceutical and medical products, Zivah follows a strict, compliance-driven return and refund policy.
                 </p>
             </div>
 
             {/* Section 1 */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-6">Conditions for Returns</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b border-gray-200 pb-2">Eligible for Return</h3>
-                        <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                            <li>Incorrect product supplied</li>
-                            <li>Expired or near-expiry product</li>
-                            <li>Product damaged in transit</li>
-                            <li>Short shipment (Partial delivery)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b border-gray-200 pb-2">Non-Returnable</h3>
-                        <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                            <li>Correctly supplied medicines</li>
-                            <li>Temperature-sensitive drugs (Cold chain)</li>
-                            <li>Opened or tampered packaging</li>
-                            <li>Products without original invoice</li>
-                        </ul>
-                    </div>
-                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">1. Eligible Returns</h2>
+                <p className="text-gray-600 mb-4">
+                    Returns are accepted only under the following circumstances:
+                </p>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
+                    <li>Incorrect product supplied</li>
+                    <li>Expired or near-expiry product supplied</li>
+                    <li>Product damaged during transit</li>
+                    <li>Short quantity supplied</li>
+                </ul>
+                <p className="text-gray-600 mt-4 text-sm">
+                    All return requests must be raised within <strong>48 hours</strong> of delivery, supported by photographs and invoice details.
+                </p>
             </section>
 
             {/* Section 2 */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Refund Processing</h2>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                    Once a return limit is approved, refunds will be processed within <strong>7–10 business days</strong>. The amount will be refunded to the original payment method or credited to your customer ledger for future purchases, based on your preference.
+                <h2 className="text-xl font-bold text-gray-900 mb-4">2. Non-Returnable Products</h2>
+                <p className="text-gray-600 mb-4">
+                    The following products are strictly non-returnable:
                 </p>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
+                    <li>Correctly delivered medicines</li>
+                    <li>Temperature-sensitive or cold-chain products</li>
+                    <li>Opened, used, or tampered items</li>
+                    <li>Products without original packaging or invoice</li>
+                </ul>
             </section>
 
             {/* Section 3 */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Replacements</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">3. Inspection & Approval</h2>
                 <p className="text-gray-600 leading-relaxed">
-                    If stock is available for the damaged or incorrect item, a replacement will be issued immediately upon verification, instead of a refund.
+                    All return requests are subject to internal quality and compliance verification. Zivah reserves the right to approve or reject any return request based on regulatory guidelines.
+                </p>
+            </section>
+
+            {/* Section 4 */}
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">4. Refund Process</h2>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
+                    <li>Approved refunds will be processed within <strong>7–10 business days</strong>.</li>
+                    <li>Refunds will be issued to the original payment mode or customer ledger account.</li>
+                    <li>Any logistics or handling charges, if applicable, may be deducted.</li>
+                </ul>
+            </section>
+
+            {/* Section 5 */}
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">5. Replacement Policy</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    Where stock is available and appropriate, Zivah may issue a replacement instead of a refund.
+                </p>
+            </section>
+
+            {/* Section 6 */}
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">6. Regulatory Disclaimer</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    Returns are governed by applicable pharmaceutical laws and regulations. Zivah reserves the right to modify this policy to remain compliant with statutory requirements.
                 </p>
             </section>
         </article>

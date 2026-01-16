@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, User, MessageSquare, Send, Loader2, CheckCircle2, Stethoscope, Heart, Shield, Building2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { cn } from '@/lib/utils';
 import {
     checkRateLimit,

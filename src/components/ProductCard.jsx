@@ -1,12 +1,13 @@
+import { memo } from 'react';
 // import { ShoppingCart } from 'lucide-react';
 // import { Button } from '@/components/ui/button';
 
-export default function ProductCard({ product }) {
+const ProductCard = memo(function ProductCard({ product }) {
     // Dynamically resolve image path for Vite
     const getImageUrl = (imageName) => {
         try {
             return new URL(`../assets/prorducts/${imageName}`, import.meta.url).href;
-        } catch (e) {
+        } catch {
             return '/placeholder-image.png'; // Fallback
         }
     };
@@ -25,6 +26,9 @@ export default function ProductCard({ product }) {
                 <img
                     src={getImageUrl(product.image)}
                     alt={product.name}
+                    loading="lazy"
+                    width="400"
+                    height="400"
                     className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500 ease-in-out filter drop-shadow-sm"
                 />
             </div>
@@ -52,4 +56,6 @@ export default function ProductCard({ product }) {
             </div>
         </div>
     );
-}
+});
+
+export default ProductCard;

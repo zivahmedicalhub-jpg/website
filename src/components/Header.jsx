@@ -4,7 +4,7 @@ import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);

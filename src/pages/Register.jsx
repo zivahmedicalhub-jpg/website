@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Mail, Phone, User, Building2, Send, ArrowRight, ArrowLeft, CheckCircle2, Loader2, FileText, RefreshCw, Lock } from 'lucide-react';
+import { Mail, Phone, User, Building2, Send, ArrowRight, ArrowLeft, CheckCircle2, Loader2, FileText, RefreshCw, Lock, Truck } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom';
 import { TermsContent } from './TermsAndConditions';
 import { RefundContent } from './RefundPolicy';
+
 import { PrivacyContent } from './PrivacyPolicy';
+import { ShippingContent } from './ShippingPolicy';
 import { checkRateLimit, recordSubmission, getRateLimitRemaining, sanitizeInput, validateEmail } from '@/utils/security';
 import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.png';
 
@@ -15,7 +17,8 @@ const steps = [
     { id: 1, title: "Your Details", icon: User },
     { id: 2, title: "Terms", icon: FileText },
     { id: 3, title: "Refund Policy", icon: RefreshCw },
-    { id: 4, title: "Privacy Policy", icon: Lock },
+    { id: 4, title: "Shipping Policy", icon: Truck },
+    { id: 5, title: "Privacy Policy", icon: Lock },
 ];
 
 export default function Register() {
@@ -31,6 +34,7 @@ export default function Register() {
         phone: '',
         termsAccepted: false,
         refundAccepted: false,
+        shippingAccepted: false,
         privacyAccepted: false
     });
 
@@ -71,7 +75,7 @@ export default function Register() {
 
     const handleSubmit = async () => {
         // Final Validation
-        if (!formData.termsAccepted || !formData.refundAccepted || !formData.privacyAccepted) {
+        if (!formData.termsAccepted || !formData.refundAccepted || !formData.shippingAccepted || !formData.privacyAccepted) {
             toast({ title: "Agreement Required", description: "You must accept all policies to register.", variant: "destructive" });
             return;
         }
@@ -96,6 +100,7 @@ export default function Register() {
         formDataToSend.append("subject", "New Registration Request");
         formDataToSend.append("agreed_terms", "Yes");
         formDataToSend.append("agreed_refund", "Yes");
+        formDataToSend.append("agreed_shipping", "Yes");
         formDataToSend.append("agreed_privacy", "Yes");
 
         try {
@@ -270,6 +275,24 @@ export default function Register() {
                     )}
 
                     {currentStep === 4 && (
+                        <div className="p-8 lg:p-12 h-[600px] flex flex-col">
+                            <h1 className="text-2xl font-bold text-gray-900 mb-2">Shipping Policy</h1>
+                            <p className="text-gray-500 mb-6">Review our shipping and delivery guidelines.</p>
+
+                            <div className="flex-grow overflow-y-auto border border-gray-100 rounded-xl p-6 bg-gray-50 mb-6">
+                                <ShippingContent />
+                            </div>
+
+                            <div className="flex justify-between items-center pt-6 border-t border-gray-100">
+                                <Button variant="ghost" onClick={handleBack}>Back</Button>
+                                <Button onClick={() => handleAgreement('shippingAccepted')} className="h-12 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
+                                    I Agree & Continue <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+
+                    {currentStep === 5 && (
                         <div className="p-8 lg:p-12 h-[600px] flex flex-col">
                             <h1 className="text-2xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
                             <p className="text-gray-500 mb-6">Review how we handle your data.</p>

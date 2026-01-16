@@ -11,6 +11,7 @@ import Register from './pages/Register';
 const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
 const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const ShippingPolicy = lazy(() => import('./pages/ShippingPolicy'));
 
 function MainLayout() {
   const location = useLocation();
@@ -26,7 +27,14 @@ function MainLayout() {
             <Route path="/register" element={<Register />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* Shortened URL aliases */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/refund" element={<RefundPolicy />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/shipping" element={<ShippingPolicy />} />
           </Routes>
         </Suspense>
       </main>
