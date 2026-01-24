@@ -16,9 +16,9 @@ import logo from '@/assets/Brand_Zivah_font-removebg-preview-removebg-preview.pn
 const steps = [
     { id: 1, title: "Your Details", icon: User },
     { id: 2, title: "Terms", icon: FileText },
-    { id: 3, title: "Refund Policy", icon: RefreshCw },
+    { id: 3, title: "Privacy Policy", icon: Lock },
     { id: 4, title: "Shipping Policy", icon: Truck },
-    { id: 5, title: "Privacy Policy", icon: Lock },
+    { id: 5, title: "Refund Policy", icon: RefreshCw },
 ];
 
 export default function Register() {
@@ -258,16 +258,16 @@ export default function Register() {
 
                     {currentStep === 3 && (
                         <div className="p-8 lg:p-12 h-[600px] flex flex-col">
-                            <h1 className="text-2xl font-bold text-gray-900 mb-2">Refund Policy</h1>
-                            <p className="text-gray-500 mb-6">Understand our return and refund guidelines.</p>
+                            <h1 className="text-2xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
+                            <p className="text-gray-500 mb-6">Review how we handle your data.</p>
 
                             <div className="flex-grow overflow-y-auto border border-gray-100 rounded-xl p-6 bg-gray-50 mb-6">
-                                <RefundContent />
+                                <PrivacyContent />
                             </div>
 
                             <div className="flex justify-between items-center pt-6 border-t border-gray-100">
                                 <Button variant="ghost" onClick={handleBack}>Back</Button>
-                                <Button onClick={() => handleAgreement('refundAccepted')} className="h-12 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
+                                <Button onClick={() => handleAgreement('privacyAccepted')} className="h-12 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
                                     I Agree & Continue <ArrowRight className="ml-2 h-4 w-4" />
                                 </Button>
                             </div>
@@ -294,16 +294,16 @@ export default function Register() {
 
                     {currentStep === 5 && (
                         <div className="p-8 lg:p-12 h-[600px] flex flex-col">
-                            <h1 className="text-2xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-                            <p className="text-gray-500 mb-6">Review how we handle your data.</p>
+                            <h1 className="text-2xl font-bold text-gray-900 mb-2">Refund Policy</h1>
+                            <p className="text-gray-500 mb-6">Understand our return and refund guidelines.</p>
 
                             <div className="flex-grow overflow-y-auto border border-gray-100 rounded-xl p-6 bg-gray-50 mb-6">
-                                <PrivacyContent />
+                                <RefundContent />
                             </div>
 
                             <div className="flex justify-between items-center pt-6 border-t border-gray-100">
                                 <Button variant="ghost" onClick={handleBack}>Back</Button>
-                                <Button onClick={handleSubmit} disabled={loading} className="h-12 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
+                                <Button onClick={() => { setFormData(prev => ({ ...prev, refundAccepted: true })); setTimeout(handleSubmit, 0); }} disabled={loading} className="h-12 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white">
                                     {loading ? (
                                         <>
                                             <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...

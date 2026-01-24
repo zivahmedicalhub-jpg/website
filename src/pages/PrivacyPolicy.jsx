@@ -7,52 +7,79 @@ import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 export function PrivacyContent() {
     return (
         <article className="prose prose-gray max-w-none space-y-8">
-            {/* Section 1 */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">1. Information Collection</h2>
-                <p className="text-gray-600 mb-4">
-                    We collect and process the following information strictly to comply with pharmaceutical regulations and enable business operations:
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                    <li>Business name and registered address</li>
-                    <li>Drug license numbers and expiry details</li>
-                    <li>GST registration details</li>
-                    <li>Contact information (Email, Phone)</li>
-                    <li>Banking and payment details</li>
-                </ul>
-            </section>
-
-            {/* Section 2 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">2. Usage of Information</h2>
-                <p className="text-gray-600 mb-4">
-                    Collected data is utilized for the following purposes:
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                    <li>Verifying regulatory compliance of buyers</li>
-                    <li>Processing orders, invoices, and payments</li>
-                    <li>Managing logistics, shipping, and delivery</li>
-                    <li>Providing customer support and service updates</li>
-                    <li>Meeting statutory tax and legal obligations</li>
-                </ul>
-            </section>
-
-            {/* Section 3 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">3. Data Sharing & Protection</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Introduction</h2>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                    We implement enterprise-grade security measures including encrypted databases and PCI-compliant payment gateways to protect your data.
+                    This Privacy Policy describes how the Platform and its affiliates collect, use, share, protect or otherwise process your personal data through the website https://zivahmedicalhub.com/.
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                    You may browse certain sections without registering. Services are offered only within India and data is stored and processed in India.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                    Zivah Medical Hub does not sell your data. We share data only with essential third-party service providers (Logistics Partners, Payment Gateways) and Regulatory Bodies where required by law.
+                    By using the Platform, you agree to be governed by Indian data protection laws.
                 </p>
             </section>
 
-            {/* Contact */}
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Collection</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    We collect personal data such as name, date of birth, address, phone number, email ID, identity proof, and payment details. Sensitive data like biometric information is collected only with consent.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Usage</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    Personal data is used to provide services, process orders, enhance user experience, resolve disputes, prevent fraud, enforce terms, conduct research, and send offers and updates.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Sharing</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    We may share personal data with group entities, affiliates, sellers, business partners, logistics partners, payment providers, and law enforcement agencies as required by law.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Security Precautions</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    We adopt reasonable security practices to protect personal data. However, internet transmission is not completely secure.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Data Deletion and Retention</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    Users may delete their account via Platform settings. Data is retained only as long as necessary or required by law.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Your Rights</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    You may access, rectify, and update your personal data through the Platform.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Consent</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    By using the Platform, you consent to data processing and communication via SMS, calls, email, or messaging apps.
+                </p>
+            </section>
+
+            <section>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Changes to Privacy Policy</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    The Privacy Policy may be updated periodically. Users are advised to review it regularly.
+                </p>
+            </section>
+
             <section className="pt-8 border-t border-gray-200">
-                <h2 className="text-lg font-bold text-gray-900 mb-2">Subject Access Requests</h2>
-                <p className="text-gray-600 text-sm">
-                    Registered entities may request data updates or account closure, subject to mandatory record-keeping obligations under the Drugs and Cosmetics Act. Please contact <a href="mailto:privacy@zivahmedicalhub.com" className="text-blue-600 hover:underline">privacy@zivahmedicalhub.com</a> for assistance.
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Grievance Officer</h2>
+                <p className="text-gray-600 leading-relaxed">
+                    Details to be provided by the Platform including name, designation, address, and contact information.
                 </p>
             </section>
         </article>

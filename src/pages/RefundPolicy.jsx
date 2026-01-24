@@ -7,76 +7,39 @@ import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 export function RefundContent() {
     return (
         <article className="prose prose-gray max-w-none space-y-8">
-            {/* Notice */}
-            <div className="p-5 bg-blue-50 border-l-4 border-blue-600 rounded-r-sm">
-                <p className="text-sm text-blue-800 leading-relaxed m-0">
-                    <strong>Important Note:</strong> Due to the regulated nature of pharmaceutical and medical products, Zivah follows a strict, compliance-driven return and refund policy.
-                </p>
-            </div>
-
-            {/* Section 1 */}
+            {/* Refund and Cancellation Policy */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">1. Eligible Returns</h2>
-                <p className="text-gray-600 mb-4">
-                    Returns are accepted only under the following circumstances:
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Refund and Cancellation Policy</h2>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                    This policy outlines how cancellations and refunds can be requested for products or services purchased through the Platform.
                 </p>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                    <li>Incorrect product supplied</li>
-                    <li>Expired or near-expiry product supplied</li>
-                    <li>Product damaged during transit</li>
-                    <li>Short quantity supplied</li>
-                </ul>
-                <p className="text-gray-600 mt-4 text-sm">
-                    All return requests must be raised within <strong>48 hours</strong> of delivery, supported by photographs and invoice details.
-                </p>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <ul className="space-y-3 list-disc pl-5 text-sm text-gray-600">
+                        <li>Cancellation requests will be considered only if made within 7 days of placing the order.</li>
+                        <li>Cancellation may not be entertained if the order has already been processed or shipped.</li>
+                        <li>Perishable items such as flowers and eatables are not eligible for cancellation.</li>
+                        <li>Refund or replacement is allowed if the product delivered is of poor quality.</li>
+                        <li>Damaged or defective items must be reported within 7 days of receipt.</li>
+                        <li>Products not matching description must be reported within 7 days.</li>
+                        <li>Warranty-related complaints must be addressed directly to manufacturers.</li>
+                        <li>Approved refunds will be processed within 7 days.</li>
+                    </ul>
+                </div>
             </section>
 
-            {/* Section 2 */}
+            {/* Return Policy */}
             <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">2. Non-Returnable Products</h2>
-                <p className="text-gray-600 mb-4">
-                    The following products are strictly non-returnable:
-                </p>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                    <li>Correctly delivered medicines</li>
-                    <li>Temperature-sensitive or cold-chain products</li>
-                    <li>Opened, used, or tampered items</li>
-                    <li>Products without original packaging or invoice</li>
-                </ul>
-            </section>
-
-            {/* Section 3 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">3. Inspection & Approval</h2>
-                <p className="text-gray-600 leading-relaxed">
-                    All return requests are subject to internal quality and compliance verification. Zivah reserves the right to approve or reject any return request based on regulatory guidelines.
-                </p>
-            </section>
-
-            {/* Section 4 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">4. Refund Process</h2>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-600">
-                    <li>Approved refunds will be processed within <strong>7–10 business days</strong>.</li>
-                    <li>Refunds will be issued to the original payment mode or customer ledger account.</li>
-                    <li>Any logistics or handling charges, if applicable, may be deducted.</li>
-                </ul>
-            </section>
-
-            {/* Section 5 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">5. Replacement Policy</h2>
-                <p className="text-gray-600 leading-relaxed">
-                    Where stock is available and appropriate, Zivah may issue a replacement instead of a refund.
-                </p>
-            </section>
-
-            {/* Section 6 */}
-            <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">6. Regulatory Disclaimer</h2>
-                <p className="text-gray-600 leading-relaxed">
-                    Returns are governed by applicable pharmaceutical laws and regulations. Zivah reserves the right to modify this policy to remain compliant with statutory requirements.
-                </p>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Return Policy</h2>
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <ul className="space-y-3 list-disc pl-5 text-sm text-gray-600">
+                        <li>Refund or exchange is available within 7 days from the date of purchase.</li>
+                        <li>Items must be unused, in original condition, and in original packaging.</li>
+                        <li>Items purchased during sale may not be eligible for return or exchange.</li>
+                        <li>Certain categories of products are exempt from return or refund and will be disclosed at purchase.</li>
+                        <li>Returned items are inspected before approval.</li>
+                        <li>Once approved, return or exchange will be processed as per policy.</li>
+                    </ul>
+                </div>
             </section>
         </article>
     );
